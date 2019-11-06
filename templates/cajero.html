@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+    {% block title %}
+        {{ super() }}
+            Cajero
+{% endblock %}
+
+
+{% block main %}
+<button><a href="{{ url_for('/retirar') }}">Retirar dinero</a></button>
+<button><a href="">Retirar dinero</a></button>
+{% endblock %}

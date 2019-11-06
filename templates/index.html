@@ -1,1 +1,32 @@
 {% extends 'base.html' %}
+    {% block title %}
+        {{ super() }}
+         Login
+    {% endblock %}
+
+
+    {% block main %}
+    <section class="section">
+        <div class="container">
+            {% if error %}
+            <div class="notification is-danger">
+                    <button class="delete"></button>
+                    <strong>Usuario o Contraseña no validos, vuelva a intentarlo.</strong>
+                  </div>
+                
+
+            {% endif %}
+
+            {% from '_macro.html' import formularioContacto %}
+            {% from '_macro.html' import input %}
+                
+            <form action="/login" method="POST">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+               {{ input('dni', label="DNI:", value="", placeholder="00000000P", size="is-rounded", type="text" , icons="fas fa-home") }}
+               {{ input('password', label="Password:", value="", placeholder="*****", size="is-rounded", type="password" , icons="fas fa-circle") }}
+              <button class="button is-info" type="submit">Entrar</button>
+            </form>
+        </div>
+    </section>
+
+    {% endblock %}

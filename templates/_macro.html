@@ -1,0 +1,24 @@
+{% macro formularioContacto(campo) %}
+<!-- Formulario de contacto -->
+{{ campo.label }}
+<!-- **kwargs es un diccionario de argumentos -->
+{{ campo(**kwargs) | safe }}
+<br />
+{% if campo.errors %} {% for error in campo.errors %}
+<h5>{{ error }}</h5>
+{% endfor %} {% endif %} {% endmacro %}
+
+{% macro input(name="", label="", value="", placeholder="", size="", type="", icons="") %}
+<div class="field">
+  <label class="label {{ size }}">{{ label }}</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input {{ size }}" type="{{ type }}" placeholder="{{ placeholder }}" name="{{ name }}" value="{{ value }}" required>
+    <span class="icon is-small is-left">
+        <i class="{{ icons }}"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+  </div>
+</div>
+{% endmacro %}
