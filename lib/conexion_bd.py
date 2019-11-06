@@ -17,17 +17,12 @@ def insertar_usuario(nombre, apellido_1, apellido_2, dni):
         ''')
         # Guardar datos
         CONEXION.commit()
-        # Cerrar CONEXION
 
 def leer_usuario(dni):
         cursor = CONEXION.cursor()
         query = (f'SELECT * FROM usuarios WHERE dni = "{dni}"')
-        print(query)
         cursor.execute(query)
         usuario = cursor.fetchall()
-        # Guardar datos
-        CONEXION.commit()
-        # Cerrar CONEXION
         return usuario
 
 def get_dinero(dni):
@@ -35,8 +30,6 @@ def get_dinero(dni):
         query = (f'SELECT saldo FROM cuentas WHERE dni = "{dni}"')
         cursor.execute(query)
         dinero = cursor.fetchall()
-        # Cerrar CONEXION
-        CONEXION.close()
         return dinero[0][0]
 
 def set_dinero(dni, cantidad):
@@ -46,7 +39,7 @@ def set_dinero(dni, cantidad):
         ''')
         # Guardar datos
         CONEXION.commit()
-        # Cerrar CONEXION
+
 
 
 def leer_password(dni):
@@ -55,8 +48,4 @@ def leer_password(dni):
         SELECT password FROM cuentas WHERE dni = "{dni}"
         ''')
         password = cursor.fetchall()
-        # Guardar datos
-        CONEXION.commit()
         return password[0][0]
-
-leer_password('21041746N')

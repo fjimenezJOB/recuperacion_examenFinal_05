@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+    {% block title %}
+        {{ super() }}
+         Ingresar dinero
+    {% endblock %}
+
+    {% block header %}
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Que cantidad desea ingresar?
+      </h1>
+      <h2 class="subtitle">
+        Saldo en la cuenta : {{ saldo }}
+      </h2>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block main %}
+
+{% from '_macro.html' import formularioContacto %}
+{% from '_macro.html' import input %}
+    
+<form action="/ingresar" method="POST">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+   {{ input('ingreso', label="Dinero que desea INGRESAR:", value="", placeholder="10", size="is-rounded", type="number" , icons="fas fa-home") }}
+  <button class="button is-info" type="submit">Ingresar</button>
+</form>
+
+{% endblock %}

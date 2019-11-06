@@ -1,11 +1,26 @@
-{% extends 'base.html' %}
-    {% block title %}
-        {{ super() }}
-            Cajero
-{% endblock %}
+{% extends 'base.html' %} {% block title %}
+{{ super() }}
+Cajero {% endblock %} {% block header %}
 
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Bienvenido {{ nombre_completo }}
+      </h1>
+      <h2 class="subtitle">
+        Saldo en la cuenta : {{ saldo }}
+      </h2>
+    </div>
+  </div>
+</section>
 
-{% block main %}
-<button><a href="{{ url_for('/retirar') }}">Retirar dinero</a></button>
-<button><a href="">Retirar dinero</a></button>
+{% endblock %} {% block main %}
+<section class="section">
+  <div class="container">
+    <button class="button is-danger"><a href="{{ url_for('retirar') }}">Retirar</a></button>
+    <button class="button is-success"><a href="{{ url_for('ingresar') }}">Ingresar</a></button>
+  </div>
+</section>
+
 {% endblock %}

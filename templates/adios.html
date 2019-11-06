@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+    {% block title %}
+        {{ super() }}
+         Ingresar dinero
+    {% endblock %}
+
+    {% block header %}
+    <section class="hero is-success">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Tu operacion se ha realizado con exito !! 
+          </h1>
+          <h2 class="subtitle">
+              Saldo actual: {{ saldo }} <br>
+             Gracias por confiar en nosotros
+          </h2>
+        </div>
+      </div>
+    </section>
+    {% endblock %}
+{% block main %}
+
+<section class="section">
+        <div class="container">
+            <button class="button is-danger"><a href="{{ url_for('home') }}">Salir</a></button>
+        </div>
+</section>
+
+{% endblock %}
